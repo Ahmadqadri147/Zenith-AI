@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useAuth } from '../hooks/useauth.js';
+import { useAuth } from '../hooks/useAuth.js';
 
 const Register = () => {
   const { loading, handleRegister } = useAuth();
