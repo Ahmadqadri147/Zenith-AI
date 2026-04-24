@@ -1,7 +1,6 @@
 const { GoogleGenAI } = require("@google/genai");
 const { z } = require("zod");
 const { zodToJsonSchema } = require("zod-to-json-schema");
-const puppeteer = require("puppeteer");
 
 
 const ai = new GoogleGenAI({
@@ -265,35 +264,23 @@ Output Format:
 }
 
 
+const html_to_pdf = require('html-pdf-node');
+
 async function generatePdfFromHtml(htmlContent) {
-  let browser;
-  try {
-    browser = await puppeteer.launch({
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--disable-dev-shm-usage",
-        "--disable-gpu",
-      ]
+  let options = { 
+    format: 'A4',
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  };
+  let file = { content: htmlContent };
+  
+  return new Promise((resolve, reject) => {
+    html_to_pdf.generatePdf(file, options).then(pdfBuffer => {
+      resolve(pdfBuffer);
+    }).catch(error => {
+      console.error("PDF Generation Error:", error);
+      reject(error);
     });
-  } catch (error) {
-    console.error("Puppeteer launch failed, trying with executablePath:", error);
-    browser = await puppeteer.launch({
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-      executablePath: "/usr/bin/google-chrome-stable" // Common path on Render if buildpack is used
-    });
-  }
-
-  const page = await browser.newPage();
-  await page.setContent(htmlContent, { waitUntil: "networkidle2" });
-  const pdfBuffer = await page.pdf({ 
-    format: "A4", 
-    printBackground: true,
-    margin: { top: '0px', right: '0px', bottom: '0px', left: '0px' }
   });
-  await browser.close();
-
-  return pdfBuffer;
 }
 
 
