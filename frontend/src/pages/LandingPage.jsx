@@ -16,13 +16,13 @@ const LandingPage = () => {
                         <span className="text-2xl font-black tracking-tight text-gray-900">Zenith AI</span>
                     </div>
                     <div className="flex items-center gap-4">
-                        <button 
+                        <button
                             onClick={() => navigate('/login')}
                             className="px-6 py-2.5 text-sm font-bold text-gray-600 hover:text-indigo-600 transition-colors"
                         >
                             Sign In
                         </button>
-                        <button 
+                        <button
                             onClick={() => navigate('/register')}
                             className="px-6 py-2.5 text-sm font-bold bg-indigo-600 text-white rounded-xl shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all hover:-translate-y-0.5"
                         >
@@ -50,7 +50,7 @@ const LandingPage = () => {
                         Elevate your career with AI-driven interview coaching. Analyze your resume, identify skill gaps, and generate ATS-optimized professional profiles in seconds.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
-                        <button 
+                        <button
                             onClick={() => navigate('/register')}
                             className="w-full sm:w-auto px-10 py-5 bg-indigo-600 text-white rounded-2xl text-lg font-bold shadow-2xl shadow-indigo-200 hover:bg-indigo-700 transition-all hover:scale-105"
                         >
@@ -123,10 +123,10 @@ const LandingPage = () => {
             <section className="py-32 px-6 text-center">
                 <div className="max-w-4xl mx-auto premium-card p-16 bg-gradient-to-br from-indigo-600 to-violet-700 text-white border-none shadow-3xl shadow-indigo-200">
                     <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">Ready to Land Your Dream Job?</h2>
-                    <p className="text-indigo-100 text-lg mb-10 font-medium opacity-90">
+                    <p className="text-indigo-100 text-lg mb-10 font-medium  ">
                         Join thousands of professionals who have used Zenith AI to accelerate their career growth.
                     </p>
-                    <button 
+                    <button
                         onClick={() => navigate('/register')}
                         className="px-12 py-5 bg-white text-indigo-600 rounded-2xl text-lg font-black shadow-xl hover:bg-indigo-50 transition-all hover:scale-105"
                     >

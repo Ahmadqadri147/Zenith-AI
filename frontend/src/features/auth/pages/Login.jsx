@@ -38,14 +38,16 @@ const Login = () => {
         <p className="text-sm font-medium text-gray-500">Sign in to continue to Zenith AI</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="premium-card p-10 w-full max-w-[440px] space-y-8 animate-fade">
+      <form onSubmit={handleSubmit} autoComplete="off" className="premium-card p-10 w-full max-w-[440px] space-y-8 animate-fade">
         <div className="space-y-2">
             <label className="text-sm font-bold text-gray-700">Email Address</label>
             <input
                 required
+                value={email}
                 onChange={(e) => setemail(e.target.value)}
                 className="premium-input w-full"
                 type="email"
+                autoComplete="off"
                 placeholder="name@company.com"
             />
         </div>
@@ -57,9 +59,11 @@ const Login = () => {
             </div>
             <input
                 required
+                value={password}
                 onChange={(e) => setpassword(e.target.value)}
                 className="premium-input w-full"
                 type="password"
+                autoComplete="new-password"
                 placeholder="••••••••"
             />
         </div>

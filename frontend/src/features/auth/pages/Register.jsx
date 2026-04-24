@@ -39,14 +39,16 @@ const Register = () => {
         <p className="text-sm font-medium text-gray-500">Join Zenith AI and master your career</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="premium-card p-10 w-full max-w-[440px] space-y-6 animate-fade">
+      <form onSubmit={handleSubmit} autoComplete="off" className="premium-card p-10 w-full max-w-[440px] space-y-6 animate-fade">
         <div className="space-y-2">
             <label className="text-sm font-bold text-gray-700">Full Name</label>
             <input
                 required
+                value={username}
                 onChange={(e) => setusername(e.target.value)}
                 className="premium-input w-full"
                 type="text"
+                autoComplete="off"
                 placeholder="John Doe"
             />
         </div>
@@ -55,9 +57,11 @@ const Register = () => {
             <label className="text-sm font-bold text-gray-700">Email Address</label>
             <input
                 required
+                value={email}
                 onChange={(e) => setemail(e.target.value)}
                 className="premium-input w-full"
                 type="email"
+                autoComplete="off"
                 placeholder="name@company.com"
             />
         </div>
@@ -66,9 +70,11 @@ const Register = () => {
             <label className="text-sm font-bold text-gray-700">Password</label>
             <input
                 required
+                value={password}
                 onChange={(e) => setpassword(e.target.value)}
                 className="premium-input w-full"
                 type="password"
+                autoComplete="new-password"
                 placeholder="••••••••"
             />
             <p className="text-[10px] text-gray-400 font-medium italic">Must be at least 8 characters long.</p>
