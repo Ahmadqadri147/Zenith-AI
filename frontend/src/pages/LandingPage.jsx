@@ -123,7 +123,7 @@ const LandingPage = () => {
             <section className="py-32 px-6 text-center">
                 <div className="max-w-4xl mx-auto premium-card p-16 bg-gradient-to-br from-indigo-600 to-violet-700 text-white border-none shadow-3xl shadow-indigo-200">
                     <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">Ready to Land Your Dream Job?</h2>
-                    <p className="text-indigo-100 text-lg mb-10 font-medium  ">
+                    <p className="text-white text-lg mb-10 font-medium opacity-90">
                         Join thousands of professionals who have used Zenith AI to accelerate their career growth.
                     </p>
                     <button
