@@ -266,19 +266,24 @@ Output Format:
 
 
 async function generatePdfFromHtml(htmlContent) {
-  const browser = await puppeteer.launch({
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-accelerated-2d-canvas",
-      "--no-first-run",
-      "--no-zygote",
-      "--single-process",
-      "--disable-gpu"
-    ],
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || null,
-  });
+  let browser;
+  try {
+    browser = await puppeteer.launch({
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+      ]
+    });
+  } catch (error) {
+    console.error("Puppeteer launch failed, trying with executablePath:", error);
+    browser = await puppeteer.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      executablePath: "/usr/bin/google-chrome-stable" // Common path on Render if buildpack is used
+    });
+  }
+
   const page = await browser.newPage();
   await page.setContent(htmlContent, { waitUntil: "networkidle2" });
   const pdfBuffer = await page.pdf({ 
@@ -289,7 +294,6 @@ async function generatePdfFromHtml(htmlContent) {
   await browser.close();
 
   return pdfBuffer;
-
 }
 
 
@@ -310,10 +314,10 @@ async function generateResumePdf({ Resume, SelfDescription, JobDescription }) {
 
   const prompt = `
   You are an Expert Resume Writer and Career Coach specialized in ATS (Applicant Tracking System) optimization.
-  
+
   Your task is to generate a professional, modern, and HIGH-ATS-SCORE resume in HTML format.
 
-  CRITICAL REQUIREMENT: The resume MUST fit on EXACTLY ONE A4 page. 
+  CRITICAL REQUIREMENT: The resume MUST fit on EXACTLY ONE A4 page.
 
   Details:
   Resume Data: ${Resume}
