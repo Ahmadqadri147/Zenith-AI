@@ -121,14 +121,14 @@ const LandingPage = () => {
 
             {/* CTA Section */}
             <section className="py-32 px-6 text-center">
-                <div className="max-w-4xl mx-auto premium-card p-16 bg-gradient-to-br from-indigo-600 to-violet-700 text-white border-none shadow-3xl shadow-indigo-200">
-                    <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">Ready to Land Your Dream Job?</h2>
-                    <p className="text-white text-lg mb-10 font-medium opacity-90">
+                <div className="max-w-4xl mx-auto premium-card p-16 bg-white border border-gray-100 shadow-3xl shadow-indigo-100">
+                    <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-gray-900">Ready to Land Your Dream Job?</h2>
+                    <p className="text-gray-600 text-lg mb-10 font-medium">
                         Join thousands of professionals who have used Zenith AI to accelerate their career growth.
                     </p>
                     <button
                         onClick={() => navigate('/register')}
-                        className="px-12 py-5 bg-white text-indigo-600 rounded-2xl text-lg font-black shadow-xl hover:bg-indigo-50 transition-all hover:scale-105"
+                        className="px-12 py-5 bg-indigo-600 text-white rounded-2xl text-lg font-black shadow-xl shadow-indigo-100 hover:bg-indigo-700 transition-all hover:scale-105"
                     >
                         Get Started for Free
                     </button>
