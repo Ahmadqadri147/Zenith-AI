@@ -36,7 +36,7 @@ const Login = () => {
         <p className="text-sm font-medium text-gray-500">Sign in to continue to Zenith AI</p>
       </div>
 
-      <form onSubmit={handleSubmit} autoComplete="off" className="premium-card p-10 w-full max-w-[440px] space-y-8 animate-fade">
+      <form onSubmit={handleSubmit} autoComplete="off" className="premium-card p-6 sm:p-10 w-full max-w-[440px] space-y-8 animate-fade">
         {error && (
             <div className="p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm font-bold text-center animate-fade">
                 {error}
@@ -53,7 +53,7 @@ const Login = () => {
                 className={`premium-input w-full ${submitting ? 'opacity-60 cursor-not-allowed' : ''}`}
                 type="email"
                 autoComplete="off"
-                placeholder="name@company.com"
+                placeholder="Enter your email!"
             />
         </div>
 
@@ -74,12 +74,12 @@ const Login = () => {
             />
         </div>
 
-        <button 
-            type="submit" 
+        <button
+            type="submit"
             disabled={submitting}
             className={`w-full py-4 rounded-xl text-lg font-bold transition-all flex items-center justify-center gap-2 ${
-                submitting 
-                ? 'bg-indigo-400 text-white cursor-not-allowed shadow-none' 
+                submitting
+                ? 'bg-indigo-400 text-white cursor-not-allowed shadow-none'
                 : 'bg-indigo-600 text-white shadow-xl shadow-indigo-100 hover:bg-indigo-700 hover:-translate-y-0.5'
             }`}
         >
@@ -97,15 +97,15 @@ const Login = () => {
 
       <p className="mt-8 text-sm font-medium text-gray-500 animate-fade">
         Don't have an account?{' '}
-        <button 
-            onClick={() => navigate('/register')} 
+        <button
+            onClick={() => navigate('/register')}
             className="font-bold text-indigo-600 hover:text-indigo-700 underline underline-offset-4"
         >
             Create an account
         </button>
       </p>
 
-      <button 
+      <button
         onClick={() => navigate('/')}
         className="mt-12 text-xs font-black text-gray-400 uppercase tracking-widest hover:text-gray-600 transition-colors"
       >

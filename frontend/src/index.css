@@ -23,31 +23,51 @@ body {
 /* Sidebar Layout */
 .app-container {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   max-width: 1600px;
   margin: 0 auto;
 }
 
 .sidebar {
-  width: 320px;
-  flex-shrink: 0;
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .main-content {
   flex: 1;
-  padding: 3rem;
+  padding: 1.5rem;
   max-width: 1000px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .app-container {
+    flex-direction: row;
+  }
+  
+  .sidebar {
+    width: 320px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: none;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+
+  .main-content {
+    padding: 3rem;
+  }
 }
 
 /* Premium Component Styling */

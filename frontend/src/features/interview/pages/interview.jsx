@@ -46,7 +46,7 @@ const Interview = () => {
     return (
         <div className="app-container">
             {/* Navigation Sidebar */}
-            <aside className="sidebar flex flex-col justify-between">
+            <aside className="sidebar flex flex-col justify-between hidden lg:flex">
                 <div className="space-y-10">
                     <div className="lg:hidden flex items-center gap-2">
                         <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
@@ -106,11 +106,67 @@ const Interview = () => {
 
             {/* Middle Data Content Area */}
             <main className="main-content">
+                {/* Mobile Navigation Header & Tabs */}
+                <div className="lg:hidden animate-fade mb-8">
+                    <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center gap-2">
+                            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                                <span className="text-white font-bold">Z</span>
+                            </div>
+                            <span className="text-lg font-black tracking-tight text-gray-900">Zenith AI</span>
+                        </div>
+                        <button 
+                            onClick={() => navigate('/home')} 
+                            className="text-sm font-bold text-gray-500 hover:text-indigo-600 transition-colors"
+                        >
+                            ← Exit
+                        </button>
+                    </div>
+
+                    {/* Metrics Summary Card */}
+                    <div className="premium-card p-6 mb-6">
+                        <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-bold text-gray-500">Match Score</span>
+                            <span className="text-lg font-black text-indigo-600">{MatchScore}%</span>
+                        </div>
+                        <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden mb-4">
+                            <div className="h-full bg-indigo-600" style={{ width: `${MatchScore}%` }}></div>
+                        </div>
+                        <div className="flex justify-between text-xs text-gray-400 font-bold uppercase">
+                            <span>Questions: {(TechnicalQuestions?.length || 0) + (BehavioralQuestions?.length || 0)}</span>
+                            <span>Prep: 7 Days</span>
+                        </div>
+                    </div>
+
+                    {/* Tab Navigation */}
+                    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+                        {[
+                            { id: 'technical', label: 'Technical', icon: '💻' },
+                            { id: 'behavioral', label: 'Soft Skills', icon: '🤝' },
+                            { id: 'skills', label: 'Skills Gap', icon: '🎯' },
+                            { id: 'plan', label: 'Prep Plan', icon: '📅' },
+                        ].map((tab) => (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveSection(tab.id)}
+                                className={`px-4 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 whitespace-nowrap transition-all shrink-0 ${
+                                    activeSection === tab.id 
+                                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100' 
+                                    : 'bg-white border border-gray-100 text-gray-600 hover:bg-gray-50'
+                                }`}
+                            >
+                                <span>{tab.icon}</span>
+                                {tab.label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="mb-12 animate-fade">
                     <span className="text-xs font-black text-indigo-600 uppercase tracking-widest block mb-2">Report Content</span>
                     <h1 className="text-3xl font-black text-gray-900 tracking-tight mb-8">{title || "Software Engineer Analysis"}</h1>
                     
-                    <div className="premium-card p-8 bg-gradient-to-br from-white to-indigo-50/30 border-indigo-100/50">
+                    <div className="premium-card p-6 sm:p-8 bg-gradient-to-br from-white to-indigo-50/30 border-indigo-100/50">
                         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                             <div className="flex-1">
                                 <h3 className="text-xl font-black text-gray-900 mb-2">Optimize Your Application</h3>
@@ -190,11 +246,11 @@ const Interview = () => {
                         <div className="space-y-6">
                             {PreparationPlan?.map((day, idx) => (
                                 <div key={idx} className="premium-card overflow-hidden">
-                                    <div className="bg-gray-50 px-8 py-4 border-b border-gray-100 flex items-center justify-between">
+                                    <div className="bg-gray-50 px-6 sm:px-8 py-4 border-b border-gray-100 flex items-center justify-between">
                                         <h3 className="font-black text-gray-900">Day {day.day}: {day.focus}</h3>
                                         <span className="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full uppercase tracking-widest">Milestone</span>
                                     </div>
-                                    <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {day.tasks?.map((task, tidx) => (
                                             <div key={tidx} className="flex items-start gap-3 p-4 rounded-xl border border-gray-50 text-sm font-medium text-gray-600 leading-relaxed">
                                                 <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full mt-1.5 flex-shrink-0"></div>
@@ -217,7 +273,7 @@ const QuestionCard = ({ q, index }) => {
 
     return (
         <div className="premium-card overflow-hidden transition-all duration-300">
-            <button onClick={() => setIsOpen(!isOpen)} className="w-full text-left p-8 flex items-center justify-between gap-6 hover:bg-gray-50/50 transition-colors">
+            <button onClick={() => setIsOpen(!isOpen)} className="w-full text-left p-6 sm:p-8 flex items-center justify-between gap-6 hover:bg-gray-50/50 transition-colors">
                 <div className="flex items-center gap-6">
                     <span className="text-sm font-black text-gray-300">{index < 10 ? `0${index}` : index}</span>
                     <h3 className="text-lg font-bold text-gray-900 leading-tight">{q.question}</h3>
@@ -225,12 +281,12 @@ const QuestionCard = ({ q, index }) => {
                 <span className={`text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`}>▼</span>
             </button>
             {isOpen && (
-                <div className="px-8 pb-8 space-y-6 animate-fade">
-                    <div className="p-6 bg-gray-50 rounded-2xl">
+                <div className="px-6 sm:px-8 pb-6 sm:pb-8 space-y-6 animate-fade">
+                    <div className="p-4 sm:p-6 bg-gray-50 rounded-2xl">
                         <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-3">Intention</p>
                         <p className="text-sm font-medium text-gray-600 italic">"{q.intention}"</p>
                     </div>
-                    <div className="p-6 bg-indigo-50/50 rounded-2xl border border-indigo-100">
+                    <div className="p-4 sm:p-6 bg-indigo-50/50 rounded-2xl border border-indigo-100">
                         <p className="text-xs font-black text-indigo-600 uppercase tracking-widest mb-3">Recommended Approach</p>
                         <p className="text-sm font-bold text-gray-900 leading-relaxed">{q.answer}</p>
                     </div>

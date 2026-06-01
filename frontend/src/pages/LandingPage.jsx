@@ -42,7 +42,7 @@ const LandingPage = () => {
                         </span>
                         <span className="text-xs font-black text-indigo-600 uppercase tracking-widest">v2.4 Is Now Live</span>
                     </div>
-                    <h1 className="text-6xl md:text-8xl font-black text-gray-900 tracking-tight leading-[0.9]">
+                    <h1 className="text-4xl sm:text-6xl md:text-8xl font-black text-gray-900 tracking-tight leading-[0.9]">
                         Master Your Next <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Interview.</span>
                     </h1>
@@ -56,9 +56,9 @@ const LandingPage = () => {
                         >
                             Build Your Future Free
                         </button>
-                        <div className="flex items-center gap-4 text-sm font-bold text-gray-400 uppercase tracking-widest">
+                        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs sm:text-sm font-bold text-gray-400 uppercase tracking-widest">
                             <span>No Credit Card Required</span>
-                            <span className="w-1.5 h-1.5 bg-gray-200 rounded-full"></span>
+                            <span className="hidden sm:inline w-1.5 h-1.5 bg-gray-200 rounded-full"></span>
                             <span>AI-Powered Analysis</span>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ const LandingPage = () => {
                             color: "bg-purple-50 text-purple-600"
                         }
                     ].map((feature, idx) => (
-                        <div key={idx} className="premium-card p-10 group hover:border-indigo-100 transition-all hover:shadow-2xl hover:shadow-indigo-50">
+                        <div key={idx} className="premium-card p-6 sm:p-10 group hover:border-indigo-100 transition-all hover:shadow-2xl hover:shadow-indigo-50">
                             <div className={`w-14 h-14 ${feature.color} rounded-2xl flex items-center justify-center text-2xl mb-8 group-hover:scale-110 transition-transform`}>
                                 {feature.icon}
                             </div>
@@ -120,9 +120,9 @@ const LandingPage = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="py-32 px-6 text-center">
-                <div className="max-w-4xl mx-auto premium-card p-16 bg-white border border-gray-100 shadow-3xl shadow-indigo-100">
-                    <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-gray-900">Ready to Land Your Dream Job?</h2>
+            <section className="py-20 sm:py-32 px-6 text-center">
+                <div className="max-w-4xl mx-auto premium-card p-8 sm:p-16 bg-white border border-gray-100 shadow-3xl shadow-indigo-100">
+                    <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight text-gray-900">Ready to Land Your Dream Job?</h2>
                     <p className="text-gray-600 text-lg mb-10 font-medium">
                         Join thousands of professionals who have used Zenith AI to accelerate their career growth.
                     </p>

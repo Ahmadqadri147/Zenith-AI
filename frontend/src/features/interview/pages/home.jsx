@@ -148,7 +148,7 @@ const Home = () => {
                         <p className="text-gray-500 font-medium">Complete the details below to start your AI-powered interview coaching session.</p>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="premium-card p-10 space-y-8">
+                    <form onSubmit={handleSubmit} className="premium-card p-6 sm:p-10 space-y-8">
                         {error && (
                             <div className="p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm font-bold text-center">
                                 {error}
