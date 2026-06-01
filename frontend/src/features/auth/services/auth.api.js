@@ -15,11 +15,10 @@ export async function Register({ username, email, password }) {
             password
         },)
         return response.data;
-
     } catch (error) {
-        console.log(error);
+        console.error(error);
+        throw error;
     }
-
 }
 
 export async function Login({ email, password }) {
@@ -30,7 +29,8 @@ export async function Login({ email, password }) {
         },)
         return response.data;
     } catch (error) {
-        console.log(error);
+        console.error(error);
+        throw error;
     }
 }
 
@@ -39,7 +39,8 @@ export async function Logout() {
         const response = await api.get("/api/auth/logout")
         return response.data;
     } catch (error) {
-        console.log(error);
+        console.error(error);
+        throw error;
     }
 }
 
@@ -48,6 +49,8 @@ export async function getME() {
         const response = await api.get("/api/auth/get-me")
         return response.data;
     } catch (error) {
-        console.log(error);
+        console.error(error);
+        throw error;
     }
 }
+
